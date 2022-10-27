@@ -1,0 +1,52 @@
+#!/usr/bin/env node
+
+const path = require('node:path');
+const program = require('commander');
+const sharp = require('sharp');
+
+const variables = {
+  allowedFillOption : ['cover', 'contain', 'fill', 'inside', 'outside'],
+  allowedExtName : ['.jpg', '.jpeg', '.png'],
+};
+
+program
+  .option('-w, --width <numbers...>', '[optional] width of the resized image')
+  .option('-h, --height <numbers...>', '[optional] height of the resized image')
+  .option('-fit, --fit <char>', '[optional] option fit [cover, contain, fill, inside, outside]. default is cover')
+  .option('-f, --file <char>', '[required] path to the file to be resized');
+
+program.parse();
+const options = program.opts();
+
+const file = options.file;
+if (!file) {
+  console.log('Specify the path to the image file');
+  console.log('Run `./resize --help` for usage.');
+  process.exit(1);
+}
+
+const extName = path.extname(file);
+if (!variables.allowedExtName.includes(extName.toLowerCase())) {
+  console.log('Not an image file');
+  console.log('Run `./resize --help` for usage.');
+  process.exit(1);
+}
+const baseName = path.basename(file, extName);
+
+let width, height, fit;
+width = (options.width) ? Number(options.width) : undefined;
+height = (options.height) ? Number(options.height) : undefined;
+fit = (options.fit) ? options.fit : 'cover';
+
+if (!variables.allowedFillOption.includes(fit)) {
+  console.log('Invalid fit option');
+  console.log('Run `./resize --help` for usage.');
+  process.exit(1);
+}
+
+sharp(file).resize(width, height, {fit: fit}).toFile(`${baseName}-${width}x${height}-${fit}${extName}`, (err, info)=>{
+  if(err){
+    throw err;
+  }
+  console.log(info);
+})

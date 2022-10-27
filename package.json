@@ -1,0 +1,15 @@
+{
+  "name": "sharp-resize",
+  "version": "1.0.0",
+  "description": "sample",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shuntagami",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^9.4.1",
+    "sharp": "^0.31.1"
+  }
+}
