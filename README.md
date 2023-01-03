@@ -1,14 +1,16 @@
-# what
+# sharp-resize
+
+## what
 
 resize command by [sharp](https://github.com/lovell/sharp).
 
-# Install packages
+## Install packages
 
 ```
 $ npm i
 ```
 
-# Example
+## Example
 
 Run `./resize --help` for usage.
 
@@ -18,3 +20,7 @@ $ ./resize -w 100 -h 100 -fit cover -f ./dog.jpg
 ```
 
 See https://github.com/lovell/sharp/blob/HEAD/docs/api-resize.md for more details about `fit` option.
+
+## License
+
+MIT
