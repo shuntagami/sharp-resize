@@ -9,7 +9,7 @@
   "author": "shuntagami",
   "license": "ISC",
   "dependencies": {
-    "commander": "^9.4.1",
-    "sharp": "^0.32.6"
+    "commander": "^15.0.0",
+    "sharp": "^0.35.1"
   }
 }
