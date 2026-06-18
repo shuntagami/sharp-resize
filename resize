@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const path = require('node:path');
-const program = require('commander');
+const { program } = require('commander');
 const sharp = require('sharp');
 
 const variables = {
@@ -12,7 +12,7 @@ const variables = {
 program
   .option('-w, --width <numbers...>', '[optional] width of the resized image')
   .option('-h, --height <numbers...>', '[optional] height of the resized image')
-  .option('-fit, --fit <char>', '[optional] option fit [cover, contain, fill, inside, outside]. default is cover')
+  .option('--fit <char>', '[optional] option fit [cover, contain, fill, inside, outside]. default is cover')
   .option('-f, --file <char>', '[required] path to the file to be resized');
 
 program.parse();
